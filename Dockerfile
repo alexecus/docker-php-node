@@ -7,7 +7,18 @@ RUN apk update
 RUN apk add \
     bash \
     unzip \
-    ca-certificates
+    ca-certificates \
+    openssh \
+    g++ \
+    make \
+    zlib-dev \
+    libpng-dev
+
+# Install Composer
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+    php composer-setup.php --filename=composer --install-dir=/usr/local/bin; \
+    php -r "unlink('composer-setup.php');"
 
 # Install Node 8
 
