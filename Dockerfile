@@ -16,8 +16,9 @@ RUN apk add \
 
 # Install Composer
 
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    php composer-setup.php --filename=composer --install-dir=/usr/local/bin; \
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
+RUN php composer-setup.php --filename=composer --install-dir=/usr/local/bin; \
     php -r "unlink('composer-setup.php');"
 
 # Install Node 8
